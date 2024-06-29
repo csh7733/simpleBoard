@@ -20,7 +20,7 @@ script:
   - ./gradlew clean build
 
 before_deploy:
-  - zip -r ec2-project simpleBoard  # 프로젝트 디렉토리를 기준으로 압축
+  - zip -r ec2-project *  # 프로젝트 디렉토리를 기준으로 압축
   - mkdir -p deploy  # deploy 디렉토리 생성
   - mv ec2-project.zip deploy/ec2-project.zip  # 압축 파일 이동
 
