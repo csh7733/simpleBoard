@@ -40,7 +40,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY  # Travis CI 환경 변수에서 AWS 비밀 액세스 키를 가져옴
 
     bucket: ec2-project-build  # AWS S3 버킷 이름
-    key: oy/ec2-project.zip  # S3 버킷 내 파일 경로
+    key: ec2-project.zip  # S3 버킷 내 파일 경로
     bundle_type: zip  # 배포할 파일 형식 (여기서는 ZIP 파일)
 
     application: ec2-project  # AWS CodeDeploy 애플리케이션 이름
