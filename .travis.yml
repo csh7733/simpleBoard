@@ -25,15 +25,29 @@ before_deploy:
   - mv ec2-project.zip deploy/ec2-project.zip  # 압축 파일 이동
 
 deploy:
-  provider: s3
-  access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
-  secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
-  bucket: ec2-project-build # S3 버킷
-  region: ap-northeast-2
-  skip_cleanup: true
-  acl: private # zip 파일 접근을 private으로
-  local_dir: deploy # before_deploy에서 생성한 디렉토리
-  wait-until-deployed: true
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+    bucket: ec2-project-build # S3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일 접근을 private으로
+    local_dir: deploy # before_deploy에서 생성한 디렉토리
+    wait-until-deployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY  # Travis CI 환경 변수에서 AWS 액세스 키 ID를 가져옴
+    secret_access_key: $AWS_SECRET_KEY  # Travis CI 환경 변수에서 AWS 비밀 액세스 키를 가져옴
+
+    bucket: ec2-project-build  # AWS S3 버킷 이름
+    key: oy/ec2-project.zip  # S3 버킷 내 파일 경로
+    bundle_type: zip  # 배포할 파일 형식 (여기서는 ZIP 파일)
+
+    application: ec2-project  # AWS CodeDeploy 애플리케이션 이름
+    deployment_group: ec2-project-group  # AWS CodeDeploy 배포 그룹 이름
+
+    region: ap-northeast-2  # AWS 리전 (서울 리전)
+    wait-until-deployed: true  # 배포 완료 시까지 대기
 
 # CI 실행 완료시 메일로 알람
 notifications:
