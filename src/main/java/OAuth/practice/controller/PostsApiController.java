@@ -1,5 +1,6 @@
 package OAuth.practice.controller;
 
+import OAuth.practice.dto.posts.PostsListResponseDto;
 import OAuth.practice.dto.posts.PostsResponseDto;
 import OAuth.practice.dto.posts.PostsSaveRequestDto;
 import OAuth.practice.dto.posts.PostsUpdateRequestDto;
@@ -20,6 +21,11 @@ import java.util.List;
 public class PostsApiController {
 
     private final PostsService postsService;
+
+    @GetMapping("/api/v1/posts")
+    public List<PostsListResponseDto> findAll() {
+        return postsService.findAllDesc();
+    }
 
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto) {
