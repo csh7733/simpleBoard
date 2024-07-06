@@ -24,7 +24,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOrigins("http://localhost:3000",
                         "222.109.149.187:3000",
                         "115.138.24.181:3000",
-                        "http://ec2-43-202-128-114.ap-northeast-2.compute.amazonaws.com")
+                        "http://ec2-43-202-128-114.ap-northeast-2.compute.amazonaws.com",
+                        "http://csh2chicken.shop")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true);
