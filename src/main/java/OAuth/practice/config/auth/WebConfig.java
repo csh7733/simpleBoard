@@ -23,7 +23,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**")
                 .allowedOrigins("http://localhost:3000",
                         "222.109.149.187:3000",
-                        "115.138.24.181:3000")
+                        "115.138.24.181:3000",
+                        "http://ec2-43-202-128-114.ap-northeast-2.compute.amazonaws.com:3000/")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true);
