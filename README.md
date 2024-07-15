@@ -1,4 +1,4 @@
-<img width="705" alt="image" src="https://github.com/csh7733/simpleBoard/assets/149491102/88282387-289b-43cf-a0e3-ea62c6d245f8">
+![image](https://github.com/user-attachments/assets/484d4913-41f6-4452-8e8b-35c02efcc193)
 
 
 http://csh2chicken.shop/
