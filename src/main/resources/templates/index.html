@@ -38,6 +38,16 @@
     </tr>
     </tbody>
 </table>
+<div class="pagination">
+    <a th:if="${startPage > 0}" th:href="@{/(page=${startPage - 10})}">&laquo;&laquo;</a>
+    <a th:if="${currentPage > 0}" th:href="@{/(page=${currentPage - 1})}">Previous</a>
+    <span th:each="i : ${#numbers.sequence(startPage, endPage)}">
+        <a th:if="${i != currentPage}" th:href="@{/(page=${i})}" th:text="${i + 1}">1</a>
+        <span th:if="${i == currentPage}" th:text="${i + 1}">1</span>
+    </span>
+    <a th:if="${currentPage < totalPages - 1}" th:href="@{/(page=${currentPage + 1})}">Next</a>
+    <a th:if="${endPage < totalPages - 1}" th:href="@{/(page=${startPage + 10})}">&raquo;&raquo;</a>
+</div>
 <div th:replace="layout/footer :: footerFragment"></div>
 </body>
 </html>
